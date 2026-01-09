@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import attendanceRoutes from './routes/attendanceRoutes.js';
+import absentRoutes from './routes/absentRoutes.js';
+import cancelRoutes from './routes/cancelRoutes.js';
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ mongoose
   .catch(err => console.error("MongoDB connection error:", err));
 
 app.use('/', attendanceRoutes);
+app.use('/absent', absentRoutes);
+app.use('/cancel', cancelRoutes);
 
 const PORT = process.env.PORT || 3002;
 
