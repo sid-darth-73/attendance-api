@@ -1,12 +1,13 @@
 import { absentModel } from "../models/absentModel.js";
 
 /**
- * GET /absent/:courseName/:date
+ * POST /absent
+ * Body: { courseName, date, secret }
  * Marks the user absent for a course on a given day
  */
 export const markAbsent = async (req, res) => {
   try {
-    const { courseName, date } = req.params;
+    const { courseName, date } = req.body;
 
     if(!courseName || !date) {
       return res.status(400).json({

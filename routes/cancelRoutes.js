@@ -1,13 +1,14 @@
 import express from "express";
 import { markCancelled } from "../controllers/cancelController.js";
+import { verifySecret } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 /**
- * Example:
- * GET /cancel/Maths/2026-01-10
+ * POST /cancel
+ * Body: { courseName, date, secret }
  */
-router.get("/:courseName/:date", markCancelled);
+router.post("/", verifySecret, markCancelled);
 
 export default router;
 

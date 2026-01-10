@@ -1,13 +1,14 @@
 import express from "express";
-import { markAbsent } from "../controllers/absentController.js";
+import { addExtra } from "../controllers/extraController.js";
 import { verifySecret } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 /**
- * POST /absent
+ * POST /extra
  * Body: { courseName, date, secret }
  */
-router.post("/", verifySecret, markAbsent);
+router.post("/", verifySecret, addExtra);
 
 export default router;
+

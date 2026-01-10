@@ -1,12 +1,13 @@
 import { cancelModel } from "../models/cancelModel.js";
 
 /**
- * GET /cancel/:courseName/:date
+ * POST /cancel
+ * Body: { courseName, date, secret }
  * Marks a class as cancelled for a given course on a given day
  */
 export const markCancelled = async (req, res) => {
   try {
-    const { courseName, date } = req.params;
+    const { courseName, date } = req.body;
 
     if (!courseName || !date) {
       return res.status(400).json({

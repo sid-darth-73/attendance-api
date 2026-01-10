@@ -5,6 +5,7 @@ import cors from 'cors';
 import attendanceRoutes from './routes/attendanceRoutes.js';
 import absentRoutes from './routes/absentRoutes.js';
 import cancelRoutes from './routes/cancelRoutes.js';
+import extraRoutes from './routes/extraRoutes.js';
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ mongoose
 app.use('/', attendanceRoutes);
 app.use('/absent', absentRoutes);
 app.use('/cancel', cancelRoutes);
+app.use('/extra', extraRoutes);
+
 
 const PORT = process.env.PORT || 3002;
 
