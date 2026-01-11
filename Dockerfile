@@ -14,7 +14,7 @@ RUN npm install --production
 COPY . .
 
 
-EXPOSE 3003
+EXPOSE 3002
 
 # define the command to run your app
 CMD ["node", "index.js"]
