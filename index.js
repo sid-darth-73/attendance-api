@@ -11,7 +11,25 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",                
+  "http://localhost:3002",            
+  "https://sid-darth-73.github.io"   
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    
+    if(allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+}));
+
 app.use(express.json());
 
 mongoose
